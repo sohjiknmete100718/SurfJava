@@ -3,17 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SURFJAVA Photocard & Merch Template</title>
+  <title>SURFJAVAREXXA Merch Collection</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@600;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-black: #0e0e0e;
-      --surf-teal: #66c3c0;     /* 薄荷藍綠 (Surf) */
-      --java-caramel: #be7d41;  /* 焦糖暖棕 (Java) */
-      --text-white: #ffffff;
-      --card-radius: 5px;
+      --bg-navy: #0b1524;          /* 深午夜藍主背景 */
+      --stage-navy: #112036;       /* 陳列展示台深藍底 */
+      --stage-border: #1d3557;     /* 展示台細微藍框 */
+      --text-white: #f4f7fb;
+      --text-muted: #93a8c4;
+      --surf-teal: #57c5c1;        /* 薄荷藍綠 (Surf) */
+      --surf-teal-dark: #156e6b;   /* 深薄荷橫幅底 */
+      --java-caramel: #be7b3a;     /* 焦糖暖棕 (Java) */
+      --rexxa-mint: #73dcd3;       /* REXXA 專屬薄荷青綠 */
+      --card-radius: 8px;
     }
 
     * {
@@ -22,32 +27,25 @@
       padding: 0;
     }
 
-    body {
-      background-color: var(--bg-black);
-      color: var(--text-white);
-      font-family: 'Montserrat', sans-serif;
-      padding-bottom: 80px;
+    html {
+      scroll-behavior: smooth;
     }
 
-    /* 1. 頂部主視覺標題區 (還原 SEAKEEN 疊字發光效果) */
+    body {
+      background-color: var(--bg-navy);
+      background-image: radial-gradient(circle at 50% 0%, #152845 0%, #0b1524 65%);
+      color: var(--text-white);
+      font-family: 'Montserrat', sans-serif;
+      padding-bottom: 90px;
+    }
+
+    /* 1. 頂部主視覺標題區 */
     header {
       text-align: center;
-      padding: 36px 20px 26px;
+      padding: 46px 20px 32px;
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
-
-    .logo-badge {
-      width: 56px;
-      height: 56px;
-      background-color: #ffffff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 12px;
-      box-shadow: 0 4px 18px rgba(102, 195, 192, 0.35);
     }
 
     .title-wrapper {
@@ -58,43 +56,73 @@
     }
 
     .main-title {
-      font-size: clamp(3rem, 9.5vw, 6.2rem);
+      position: relative;
+      font-size: clamp(2.1rem, 7.6vw, 5.2rem);
       font-weight: 900;
       letter-spacing: -1px;
-      line-height: 0.92;
+      line-height: 0.95;
       text-transform: uppercase;
       user-select: none;
+      display: inline-flex;
+      align-items: center;
     }
 
-    .title-surf { color: var(--surf-teal); }
-    .title-java { color: var(--java-caramel); }
+    .title-surf {
+      color: var(--surf-teal);
+      text-shadow: 0 0 22px rgba(87, 197, 193, 0.35);
+    }
+
+    .title-java {
+      color: var(--java-caramel);
+      text-shadow: 0 0 22px rgba(190, 123, 58, 0.35);
+    }
+
+    .title-rexxa {
+      color: var(--rexxa-mint);
+      text-shadow: 0 0 22px rgba(115, 220, 211, 0.4);
+    }
+
+    .rexxa-mascot-icon {
+      width: clamp(28px, 4.2vw, 48px);
+      height: auto;
+      margin-left: 6px;
+      margin-top: -0.55em;
+      filter: drop-shadow(0 0 10px rgba(115, 220, 211, 0.7));
+      transform: rotate(8deg);
+      flex-shrink: 0;
+    }
 
     .sub-script {
-      font-family: 'Alex Brush', cursive;
-      font-size: clamp(2.1rem, 5.8vw, 4rem);
-      color: var(--text-white);
-      margin-top: -0.42em; /* 往上疊壓在大字下半部 */
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.35rem, 3.8vw, 2.7rem);
+      color: #ffffff;
+      letter-spacing: 1px;
+      margin-top: -0.22em;
       text-shadow:
-        0 0 8px rgba(255, 255, 255, 0.9),
-        0 0 18px rgba(255, 255, 255, 0.6),
-        0 3px 10px rgba(0, 0, 0, 0.95);
-      transform: rotate(-2deg);
+        0 0 8px rgba(255, 255, 255, 0.95),
+        0 0 18px rgba(115, 220, 211, 0.85),
+        0 0 28px rgba(87, 197, 193, 0.6),
+        0 3px 10px rgba(0, 0, 0, 0.9);
+      transform: rotate(-1.5deg);
       pointer-events: none;
     }
 
     /* 2. 焦糖暖棕公告欄 */
     .notice-bar {
       background-color: var(--java-caramel);
-      color: var(--text-white);
-      padding: 20px 10%;
+      color: #ffffff;
+      padding: 18px 10%;
       font-size: 0.85rem;
       line-height: 1.65;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
     }
 
     .notice-bar h3 {
       font-size: 1.05rem;
       font-weight: 900;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
+      letter-spacing: 0.3px;
     }
 
     .notice-bar ul {
@@ -105,17 +133,17 @@
       margin-bottom: 3px;
     }
 
-    /* 3. 滿版薄荷藍綠 ≡ MENU 導覽列 (還原截圖設計) */
+    /* 3. 滿版薄荷藍綠 ≡ MENU 導覽列 */
     .menu-wrapper {
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 6px 20px rgba(4, 10, 20, 0.65);
     }
 
     .menu-header-bar {
       background-color: var(--surf-teal);
-      color: var(--text-white);
+      color: #ffffff;
       padding: 13px 10%;
       display: flex;
       justify-content: space-between;
@@ -140,16 +168,16 @@
     .menu-quick-stats {
       font-size: 0.8rem;
       font-weight: 900;
-      background-color: var(--bg-black);
+      background-color: var(--bg-navy);
       color: var(--surf-teal);
-      padding: 5px 13px;
+      padding: 5px 14px;
       border-radius: 20px;
       letter-spacing: 0.5px;
+      border: 1px solid rgba(87, 197, 193, 0.4);
     }
 
-    /* 可展開的篩選控制面板 */
     .menu-drawer {
-      background-color: #141c1c;
+      background-color: #0e1b2e;
       border-bottom: 2px solid var(--surf-teal);
       padding: 14px 10%;
       display: flex;
@@ -172,18 +200,19 @@
     .btn-group {
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
       gap: 7px;
     }
 
     .btn {
-      background: rgba(255, 255, 255, 0.07);
-      color: #fff;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-white);
       border: 1.5px solid var(--surf-teal);
-      padding: 5px 13px;
+      padding: 5px 12px;
       border-radius: 20px;
       font-family: 'Montserrat', sans-serif;
       font-weight: 800;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       cursor: pointer;
       transition: all 0.18s;
       text-transform: uppercase;
@@ -191,31 +220,44 @@
 
     .btn:hover, .btn.active {
       background: var(--surf-teal);
-      color: var(--bg-black);
+      color: var(--bg-navy);
     }
 
     .btn-caramel {
       background: var(--java-caramel);
       border-color: var(--java-caramel);
-      color: #fff;
+      color: #ffffff;
     }
 
     .btn-caramel:hover {
-      background: #9e632e;
-      border-color: #9e632e;
+      background: #9f642b;
+      border-color: #9f642b;
     }
 
     .btn-outline-caramel {
       border-color: var(--java-caramel);
-      color: var(--java-caramel);
+      color: #e69d56;
     }
 
     .btn-outline-caramel:hover, .btn-outline-caramel.active {
       background: var(--java-caramel);
-      color: #fff;
+      color: #ffffff;
     }
 
-    /* 4. 內容容器與圖例說明 (還原截圖左右對齊規格) */
+    .event-select {
+      background-color: var(--bg-navy);
+      color: #ffffff;
+      border: 1.5px solid var(--surf-teal);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.7rem;
+      max-width: 260px;
+      cursor: pointer;
+    }
+
+    /* 4. 內容容器與圖例說明 (已移除尺寸文字) */
     .container {
       max-width: 1120px;
       margin: 0 auto;
@@ -225,19 +267,13 @@
     .legend-section {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: center;
-      padding: 28px 0 22px;
-      gap: 18px;
+      padding: 22px 0 16px;
+      gap: 24px;
       font-size: 0.75rem;
       font-weight: 800;
       letter-spacing: 0.4px;
-    }
-
-    .legend-boxes {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
     }
 
     .legend-item {
@@ -247,118 +283,147 @@
     }
 
     .box-sample {
-      width: 24px;
-      height: 36px;
-      border-radius: 4px;
+      width: 22px;
+      height: 32px;
+      border-radius: 5px;
+      background-color: var(--stage-navy);
     }
 
-    .box-random { border: 1.5px solid var(--surf-teal); }
-    .box-secret { border: 1.5px solid var(--java-caramel); }
+    .box-random {
+      border: 1.5px solid var(--surf-teal);
+    }
+
+    .box-secret {
+      border: 2px solid transparent;
+      background:
+        linear-gradient(var(--stage-navy), var(--stage-navy)) padding-box,
+        linear-gradient(135deg, #57c5c1 0%, #a8f5f2 35%, #f5b97d 65%, #be7b3a 100%) border-box;
+      box-shadow: -3px 0 10px rgba(87, 197, 193, 0.75), 3px 0 10px rgba(190, 123, 58, 0.75);
+    }
 
     .txt-teal { color: var(--surf-teal); }
-    .txt-caramel { color: var(--java-caramel); }
+    .txt-caramel { color: #e69d56; }
 
-    .size-info {
-      text-align: right;
-      line-height: 1.75;
-    }
-
-    /* 5. 系列大標題橫幅 (EXCLUSIVE PHOTOCARD SET) */
-    .set-banner {
-      background-color: var(--surf-teal);
-      color: var(--text-white);
-      text-align: center;
-      font-weight: 900;
-      font-size: clamp(1rem, 2.5vw, 1.3rem);
-      padding: 10px 14px;
-      letter-spacing: 1px;
-      margin: 12px 0 24px;
-      text-transform: uppercase;
-    }
-
-    .set-banner.merch-banner {
-      background-color: var(--java-caramel);
-    }
-
-    /* 6. 系列小標題 (SURF | BACK TO SCHOOL SERIES + 底線) */
-    .series-block {
-      margin-bottom: 28px;
-    }
-
-    .series-header {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.88rem;
-      font-weight: 900;
-      margin-bottom: 10px;
-      padding-bottom: 3px;
-      border-bottom: 2px solid var(--java-caramel);
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
-    }
-
-    .series-header.surf-accent {
-      border-bottom-color: var(--surf-teal);
-    }
-
-    .series-divider {
-      color: #ffffff;
-      font-weight: 600;
-    }
-
-    .series-count {
-      font-size: 0.72rem;
-      color: #888;
-      margin-left: 8px;
-      font-weight: 800;
-    }
-
-    /* 7. 小卡網格 (還原截圖 10 欄高密度無文字純圖鑑網格) */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(10, 1fr);
-      gap: 6px;
-    }
-
-    /* 周邊商品網格 (正方形 1:1 搭配品名標籤) */
-    .merch-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 12px;
-    }
-
-    .item-card {
-      position: relative;
-      border-radius: var(--card-radius);
+    /* 5. 官方型錄展示區塊 */
+    .event-section {
+      margin-bottom: 46px;
+      scroll-margin-top: 72px;
+      background-color: var(--stage-navy);
+      border: 1px solid var(--stage-border);
+      border-radius: 16px;
       overflow: hidden;
-      cursor: pointer;
-      background-color: #181818;
-      border: 1.5px solid #2b2b2b;
-      transition: transform 0.15s, border-color 0.2s;
-      user-select: none;
+      box-shadow: 0 12px 32px rgba(4, 10, 20, 0.45);
+    }
+
+    .catalog-header {
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(87, 197, 193, 0.14),
+        rgba(87, 197, 193, 0.14) 12px,
+        rgba(17, 32, 54, 0.6) 12px,
+        rgba(17, 32, 54, 0.6) 24px
+      );
+      border-bottom: 2px solid rgba(87, 197, 193, 0.35);
+      padding: 18px 24px;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
     }
 
-    .item-card:hover {
-      transform: translateY(-2px);
-      z-index: 2;
+    .pill-sub-banner {
+      background-color: var(--java-caramel);
+      color: #ffffff;
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 1.2px;
+      padding: 4px 20px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      z-index: 1;
     }
 
-    .item-card.type-random { border-color: var(--surf-teal); }
-    .item-card.type-secret { border-color: var(--java-caramel); }
+    .main-event-bar {
+      background-color: var(--surf-teal-dark);
+      border: 1.5px solid var(--surf-teal);
+      color: #ffffff;
+      font-size: clamp(0.95rem, 2.3vw, 1.25rem);
+      font-weight: 900;
+      letter-spacing: 1px;
+      padding: 10px 26px;
+      border-radius: 10px;
+      margin-top: -6px;
+      width: 100%;
+      max-width: 720px;
+      text-transform: uppercase;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    }
 
+    /* 6. 無邊框懸浮商品陳列台 */
+    .catalog-stage {
+      padding: 26px 24px 30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+      gap: 24px 18px;
+      align-items: end;
+    }
+
+    .showcase-item {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      user-select: none;
+      transition: transform 0.2s ease;
+    }
+
+    .showcase-item:hover {
+      transform: translateY(-4px);
+    }
+
+    /* 圖片區：點擊切換「已擁有」 */
     .img-wrapper {
       position: relative;
       width: 100%;
-      aspect-ratio: 5.5 / 8.5;
+      aspect-ratio: 5.5 / 8.5; /* 小卡 / 明信片比例 */
+      border-radius: var(--card-radius);
       overflow: hidden;
-      background-color: #202020;
+      background-color: #0d192b;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      cursor: pointer;
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
     }
 
-    .item-card.is-merch .img-wrapper {
+    /* 周邊與扭蛋使用 1:1 正方形比例 */
+    .showcase-item.is-square .img-wrapper {
       aspect-ratio: 1 / 1;
+    }
+
+    .showcase-item.type-random .img-wrapper {
+      border-color: var(--surf-teal);
+    }
+
+    /* 隱藏卡 (Secret Card)：雙邊亮框發光特效 */
+    .showcase-item.type-secret .img-wrapper {
+      border: 2.5px solid transparent;
+      background:
+        linear-gradient(#0d192b, #0d192b) padding-box,
+        linear-gradient(125deg, #47dcd7 0%, #b5faf7 30%, #ffd2a6 70%, #d47f2a 100%) border-box;
+      box-shadow:
+        -5px 0 16px rgba(87, 197, 193, 0.72),
+        5px 0 16px rgba(190, 123, 58, 0.72),
+        0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .showcase-item.type-secret:hover .img-wrapper {
+      box-shadow:
+        -7px 0 22px rgba(87, 197, 193, 0.95),
+        7px 0 22px rgba(190, 123, 58, 0.95),
+        0 10px 24px rgba(0, 0, 0, 0.6);
     }
 
     .img-wrapper img {
@@ -366,76 +431,103 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: filter 0.2s;
+      transition: filter 0.2s, opacity 0.2s;
     }
 
-    /* 僅官方周邊顯示底部商品名稱 */
-    .merch-caption {
-      padding: 8px;
-      background-color: #161616;
-      font-size: 0.72rem;
-      line-height: 1.35;
-      border-top: 1px solid #262626;
+    .secret-badge {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: linear-gradient(90deg, var(--surf-teal), var(--java-caramel));
+      color: #ffffff;
+      font-size: 0.58rem;
+      font-weight: 900;
+      padding: 2px 7px;
+      border-radius: 10px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+      z-index: 1;
     }
 
-    .merch-title {
+    /* 文字區：支援官方購買連結 */
+    .showcase-title {
+      margin-top: 10px;
+      font-size: 0.74rem;
       font-weight: 800;
-      color: #fff;
+      color: #ffffff;
+      line-height: 1.35;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      padding: 0 4px;
     }
 
-    .merch-sub {
-      font-size: 0.65rem;
+    .showcase-link {
+      color: #ffffff;
+      text-decoration: none;
+      border-bottom: 1.5px dashed rgba(87, 197, 193, 0.65);
+      padding-bottom: 1px;
+      transition: color 0.18s, border-color 0.18s;
+    }
+
+    .showcase-link:hover {
       color: var(--surf-teal);
-      margin-top: 2px;
+      border-bottom-style: solid;
+      border-bottom-color: var(--surf-teal);
     }
 
-    /* 點擊標記「已擁有」狀態 */
-    .item-card.owned .img-wrapper img {
-      filter: grayscale(90%) brightness(35%);
+    .showcase-link::after {
+      content: " ↗";
+      font-size: 0.68rem;
+      color: var(--surf-teal);
     }
 
-    .item-card.owned .img-wrapper::after {
-      content: "✓";
+    /* 分類標籤配色 */
+    .showcase-type {
+      margin-top: 4px;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .cat-photocard { color: var(--surf-teal); }
+    .cat-postcard  { color: var(--rexxa-mint); }
+    .cat-gasha     { color: #f2b06d; }
+    .cat-merch     { color: #e69d56; }
+
+    /* 點擊圖片標記「已擁有」狀態 */
+    .showcase-item.owned .img-wrapper img {
+      filter: grayscale(85%) brightness(42%);
+    }
+
+    .showcase-item.owned .img-wrapper::after {
+      content: "✓ OWNED";
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: var(--java-caramel);
-      color: #fff;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      font-weight: 900;
-      border: 1.5px solid #fff;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.85);
-    }
-
-    .item-card.is-merch.owned .img-wrapper::after {
-      content: "✓ OWNED";
-      width: auto;
-      height: auto;
-      border-radius: 4px;
-      padding: 4px 8px;
       transform: translate(-50%, -50%) rotate(-10deg);
+      background-color: var(--java-caramel);
+      color: #ffffff;
+      font-size: 0.72rem;
+      font-weight: 900;
+      padding: 5px 10px;
+      border-radius: 6px;
+      border: 2px solid #ffffff;
+      white-space: nowrap;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
     }
 
-    /* 提示訊息 Toast */
     .toast {
       position: fixed;
       bottom: 24px;
       left: 50%;
       transform: translateX(-50%) translateY(100px);
       background-color: var(--surf-teal);
-      color: var(--bg-black);
+      color: var(--bg-navy);
       font-weight: 900;
       font-size: 0.82rem;
       padding: 10px 22px;
       border-radius: 30px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.65);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.55);
       transition: transform 0.25s ease;
       z-index: 999;
     }
@@ -444,16 +536,12 @@
       transform: translateX(-50%) translateY(0);
     }
 
-    /* RWD 手機與平板適配 */
-    @media (max-width: 900px) {
-      .card-grid { grid-template-columns: repeat(6, 1fr); }
-    }
-
     @media (max-width: 600px) {
       .notice-bar, .menu-header-bar, .menu-drawer { padding-left: 6%; padding-right: 6%; }
-      .size-info { text-align: left; }
-      .card-grid { grid-template-columns: repeat(5, 1fr); gap: 4px; }
-      .merch-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .catalog-header { padding: 14px 12px; }
+      .pill-sub-banner { font-size: 0.6rem; padding: 3px 14px; }
+      .main-event-bar { font-size: 0.88rem; padding: 8px 14px; }
+      .catalog-stage { padding: 18px 14px 22px; grid-template-columns: repeat(2, 1fr); gap: 18px 12px; }
     }
   </style>
 </head>
@@ -461,26 +549,23 @@
 
   <!-- 1. 頂部主視覺標題區 -->
   <header>
-    <div class="logo-badge" title="SURFJAVA Logo">
-      <svg width="38" height="38" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M52 20C32 20 20 35 23 50C25 60 36 62 46 53C50 49 54 46 58 46" stroke="#66C3C0" stroke-width="15" stroke-linecap="round"/>
-        <path d="M48 80C68 80 80 65 77 50C75 40 64 38 54 47C50 51 46 54 42 54" stroke="#BE7D41" stroke-width="15" stroke-linecap="round"/>
-      </svg>
-    </div>
     <div class="title-wrapper">
       <div class="main-title">
-        <span class="title-surf">SURF</span><span class="title-java">JAVA</span>
+        <span class="title-surf">SURF</span><span class="title-java">JAVA</span><span class="title-rexxa">REXXA</span>
+        <svg class="rexxa-mascot-icon" viewBox="0 0 100 90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="REXXA Icon">
+          <path d="M 16 14 C 10 14, 7 20, 11 26 C 14 30, 16 33, 14 39 C 8 53, 12 72, 26 78 C 40 84, 65 84, 80 77 C 93 71, 95 54, 86 46 C 81 42, 77 42, 74 42 C 74 28, 63 17, 46 17 C 37 17, 30 19, 27 19 C 23 16, 19 14, 16 14 Z" fill="#73dcd3"/>
+        </svg>
       </div>
-      <div class="sub-script">photocard &amp; merch template</div>
+      <div class="sub-script">Merch collection</div>
     </div>
   </header>
 
   <!-- 2. 焦糖暖棕公告欄 -->
   <section class="notice-bar">
-    <h3>Made by @你的IG或X帳號</h3>
+    <h3>Made by @malimaeeklaewwww</h3>
     <ul>
-      <li>收錄 SURFJAVA 官方發行小卡與周邊商品（點擊小卡即可標記「✓ 已擁有」）</li>
-      <li>收集紀錄會自動儲存在您的瀏覽器中，重新整理也不會消失</li>
+      <li>收錄 SURFJAVA &amp; REXXA 官方發行小卡、明信片、扭蛋與周邊商品</li>
+      <li>點擊「圖片」可標記「✓ OWNED 已擁有」；點擊「品項文字（↗）」可前往官網購買頁面</li>
       <li>如有缺漏或勘誤歡迎私訊補充，請勿二改或用於商業用途</li>
     </ul>
   </section>
@@ -492,136 +577,261 @@
       <span class="menu-quick-stats" id="stats-badge">OWNED: 0 / 0 (0%)</span>
     </div>
     <div class="menu-drawer" id="menu-drawer">
-      <!-- 大分類切換 -->
       <div class="drawer-row">
         <div class="btn-group">
           <button class="btn active" onclick="switchCategory('ALL', this)">ALL (全部)</button>
           <button class="btn" onclick="switchCategory('PHOTOCARD', this)">PHOTOCARDS (小卡)</button>
+          <button class="btn" onclick="switchCategory('POSTCARD', this)">POSTCARD (明信片)</button>
+          <button class="btn" onclick="switchCategory('GASHA', this)">GASHA (扭蛋)</button>
           <button class="btn" onclick="switchCategory('MERCH', this)">OFFICIAL MERCH (周邊)</button>
         </div>
         <div class="btn-group">
+          <select class="event-select" id="event-jump" onchange="jumpToEvent(this.value)">
+            <option value="">JUMP TO EVENT (快速跳轉)...</option>
+          </select>
           <button class="btn" onclick="copyMissingList()">EXPORT MISSING</button>
           <button class="btn btn-caramel" onclick="resetProgress()">RESET</button>
         </div>
       </div>
-      <!-- 成員與缺卡篩選 -->
       <div class="drawer-row">
-        <div class="btn-group">
-          <button class="btn active" onclick="setMemberFilter('ALL', this)">ALL MEMBERS</button>
-          <button class="btn" onclick="setMemberFilter('SURF', this)">SURF</button>
-          <button class="btn" onclick="setMemberFilter('JAVA', this)">JAVA</button>
-          <button class="btn" onclick="setMemberFilter('CP', this)">SURFJAVA (CP)</button>
-        </div>
-        <button class="btn btn-outline-caramel" id="missing-btn" onclick="toggleMissingOnly(this)">ONLY MISSING</button>
+        <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: 700;">點圖片＝標記已擁有 ｜ 點文字＝前往官網購買頁</span>
+        <button class="btn btn-outline-caramel" id="missing-btn" onclick="toggleMissingOnly(this)">ONLY MISSING (僅看未擁有)</button>
       </div>
     </div>
   </nav>
 
   <!-- 4. 主要內容區 -->
   <main class="container">
-    <!-- 圖例與尺寸說明 (還原截圖對齊版型) -->
     <div class="legend-section">
-      <div class="legend-boxes">
-        <div class="legend-item">
-          <div class="box-sample box-random"></div>
-          <span class="txt-teal">RANDOM CARD</span>
-        </div>
-        <div class="legend-item">
-          <div class="box-sample box-secret"></div>
-          <span class="txt-caramel">SECRET CARD</span>
-        </div>
+      <div class="legend-item">
+        <div class="box-sample box-random"></div>
+        <span class="txt-teal">PHOTOCARD / RANDOM CARD</span>
       </div>
-      <div class="size-info">
-        <div><span class="txt-caramel">PHOTOCARD SIZE</span> (5.5×8.5 CM)</div>
-        <div><span class="txt-teal">COLLECTIBLE CARD SIZE</span> (6.4×9 CM)</div>
-        <div>(CARD ON-SALE EVENT)</div>
+      <div class="legend-item">
+        <div class="box-sample box-secret"></div>
+        <span class="txt-caramel">SECRET / SPECIAL CARD (雙色亮框)</span>
       </div>
     </div>
 
-    <!-- 動態渲染圖鑑區塊 -->
+    <!-- 動態渲染 15 大活動型錄展示區 -->
     <div id="archive-container"></div>
   </main>
 
-  <div class="toast" id="toast">已複製缺卡清單！</div>
+  <div class="toast" id="toast">已複製缺物清單！</div>
 
   <script>
     /**
      * =================================================================
-     * 圖鑑資料庫 (依照你收集的系列在此新增或替換圖片)
+     * SURFJAVAREXXA 完整 15 大系列資料庫
+     * category: 'PHOTOCARD' | 'POSTCARD' | 'GASHA' | 'MERCH'
+     * type:     'random' (薄荷藍綠框) | 'secret' (雙邊亮框特效) | 'normal' (一般展示)
+     * img:      圖片路徑 (例如 "./images/26-h2h-card-01.jpg")
+     * url:      官網購買頁面連結 (留空 "" 則顯示純文字，填入網址則變成可點擊連結)
      * =================================================================
      */
     const ARCHIVE_DATA = [
       {
-        bannerTitle: "EXCLUSIVE PHOTOCARD SET",
-        category: "PHOTOCARD",
-        seriesList: [
-          {
-            member: "SURF",
-            seriesName: "BACK TO SCHOOL SERIES",
-            items: [
-              { id: "surf-bts-01", title: "SURF BTS 01", type: "normal", img: "https://placehold.co/220x340/1b2e2e/66c3c0?text=SURF+01" },
-              { id: "surf-bts-02", title: "SURF BTS 02", type: "normal", img: "https://placehold.co/220x340/1b2e2e/66c3c0?text=SURF+02" },
-              { id: "surf-bts-03", title: "SURF BTS 03", type: "normal", img: "https://placehold.co/220x340/1b2e2e/66c3c0?text=SURF+03" },
-              { id: "surf-bts-04", title: "SURF BTS 04", type: "normal", img: "https://placehold.co/220x340/1b2e2e/66c3c0?text=SURF+04" },
-              { id: "surf-bts-05", title: "SURF BTS 05", type: "normal", img: "https://placehold.co/220x340/1b2e2e/66c3c0?text=SURF+05" },
-              { id: "surf-bts-06", title: "SURF BTS 06", type: "random", img: "https://placehold.co/220x340/1b2e2e/66c3c0?text=SURF+06" },
-              { id: "surf-bts-07", title: "SURF BTS 07", type: "random", img: "https://placehold.co/220x340/1b2e2e/66c3c0?text=SURF+07" },
-              { id: "surf-bts-08", title: "SURF BTS 08", type: "random", img: "https://placehold.co/220x340/1b2e2e/66c3c0?text=SURF+08" },
-              { id: "surf-bts-09", title: "SURF BTS 09", type: "random", img: "https://placehold.co/220x340/1b2e2e/66c3c0?text=SURF+09" },
-              { id: "surf-bts-10", title: "SURF BTS SECRET", type: "secret", img: "https://placehold.co/220x340/2e2218/be7d41?text=SURF+10" }
-            ]
-          },
-          {
-            member: "JAVA",
-            seriesName: "BACK TO SCHOOL SERIES",
-            items: [
-              { id: "java-bts-01", title: "JAVA BTS 01", type: "normal", img: "https://placehold.co/220x340/2e2218/be7d41?text=JAVA+01" },
-              { id: "java-bts-02", title: "JAVA BTS 02", type: "normal", img: "https://placehold.co/220x340/2e2218/be7d41?text=JAVA+02" },
-              { id: "java-bts-03", title: "JAVA BTS 03", type: "normal", img: "https://placehold.co/220x340/2e2218/be7d41?text=JAVA+03" },
-              { id: "java-bts-04", title: "JAVA BTS 04", type: "normal", img: "https://placehold.co/220x340/2e2218/be7d41?text=JAVA+04" },
-              { id: "java-bts-05", title: "JAVA BTS 05", type: "normal", img: "https://placehold.co/220x340/2e2218/be7d41?text=JAVA+05" },
-              { id: "java-bts-06", title: "JAVA BTS 06", type: "random", img: "https://placehold.co/220x340/2e2218/be7d41?text=JAVA+06" },
-              { id: "java-bts-07", title: "JAVA BTS 07", type: "random", img: "https://placehold.co/220x340/2e2218/be7d41?text=JAVA+07" },
-              { id: "java-bts-08", title: "JAVA BTS 08", type: "random", img: "https://placehold.co/220x340/2e2218/be7d41?text=JAVA+08" },
-              { id: "java-bts-09", title: "JAVA BTS 09", type: "random", img: "https://placehold.co/220x340/2e2218/be7d41?text=JAVA+09" },
-              { id: "java-bts-10", title: "JAVA BTS SECRET", type: "secret", img: "https://placehold.co/220x340/2e2218/be7d41?text=JAVA+10" }
-            ]
-          },
-          {
-            member: "CP",
-            seriesName: "SURFJAVA COUPLE SET",
-            items: [
-              { id: "cp-set-01", title: "SURFJAVA 01", type: "normal", img: "https://placehold.co/220x340/1f2424/ffffff?text=CP+01" },
-              { id: "cp-set-02", title: "SURFJAVA 02", type: "normal", img: "https://placehold.co/220x340/1f2424/ffffff?text=CP+02" },
-              { id: "cp-set-03", title: "SURFJAVA 03", type: "random", img: "https://placehold.co/220x340/1b2e2e/66c3c0?text=CP+03" },
-              { id: "cp-set-04", title: "SURFJAVA SECRET", type: "secret", img: "https://placehold.co/220x340/2e2218/be7d41?text=CP+04" }
-            ]
-          }
+        eventId: "evt-head-2-head",
+        subLabel: "GMMTV SERIES COLLECTION",
+        eventTitle: "HEAD 2 HEAD",
+        items: [
+          { id: "h2h-card-set", title: "HEAD 2 HEAD COLLECTIBLE CARD SET", category: "PHOTOCARD", type: "random", img: "https://placehold.co/220x340/132842/57c5c1?text=H2H+CARD+SET", url: "" },
+          { id: "h2h-sj-card-set", title: "SURFJAVA COLLECTIBLE CARD SET | HEAD 2 HEAD", category: "PHOTOCARD", type: "secret", img: "https://placehold.co/220x340/241d26/e69d56?text=SURFJAVA+CARD+SET", url: "" },
+          { id: "h2h-boxset", title: "HEAD 2 HEAD MEMORIAL BOXSET", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=MEMORIAL+BOXSET", url: "" },
+          { id: "h2h-socks", title: "FARM AND VAN SOCKS | HEAD 2 HEAD", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=FARM+AND+VAN+SOCKS", url: "" }
         ]
       },
       {
-        bannerTitle: "OFFICIAL MERCHANDISE",
-        category: "MERCH",
-        seriesList: [
-          {
-            member: "CP",
-            seriesName: "GMMTV OFFICIAL MERCH COLLECTION",
-            items: [
-              { id: "merch-01", title: "ACRYLIC STAND SET", sub: "雙人壓克力立牌組", type: "normal", img: "https://placehold.co/300x300/1f2424/66c3c0?text=ACRYLIC+STAND" },
-              { id: "merch-02", title: "KEYCHAIN & PHOTOCARD", sub: "壓克力鑰匙圈 + 小卡", type: "normal", img: "https://placehold.co/300x300/1f2424/be7d41?text=KEYCHAIN" },
-              { id: "merch-03", title: "POSTCARD SET", sub: "明信片套組 (12張入)", type: "normal", img: "https://placehold.co/300x300/1f2424/ffffff?text=POSTCARD+SET" },
-              { id: "merch-04", title: "MASCOT DOLL KEYCHAIN", sub: "官方娃娃吊飾", type: "normal", img: "https://placehold.co/300x300/1f2424/66c3c0?text=MASCOT+DOLL" }
-            ]
-          }
+        eventId: "evt-naiin-2026",
+        subLabel: "GMMTV OFFICIAL MERCHANDISE",
+        eventTitle: "GMMTV Naiin Book Fair 2026",
+        items: [
+          { id: "naiin26-rc", title: "BOYS COLLECTIBLE RANDOM CARD | HAPPY FAM BONDS", category: "PHOTOCARD", type: "random", img: "https://placehold.co/220x340/132842/57c5c1?text=HAPPY+FAM+BONDS+RC", url: "" },
+          { id: "naiin26-holder", title: "ACRYLIC MAGNETIC CARD HOLDER WITH PHOTOCARD", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=MAGNETIC+HOLDER", url: "" },
+          { id: "naiin26-gasha", title: "GASHA: ACRYLIC MAGNET & POSTCARD", category: "GASHA", type: "normal", img: "https://placehold.co/300x300/162b47/f2b06d?text=GASHA+MAGNET", url: "" }
+        ]
+      },
+      {
+        eventId: "evt-fanival-2026",
+        subLabel: "GMMTV OFFICIAL MERCHANDISE",
+        eventTitle: "GMMTV Fanival 2026",
+        items: [
+          { id: "fanival26-heart-rc", title: "BOYS SELFIE HEART SHOT COLLECTIBLE RANDOM CARD", category: "PHOTOCARD", type: "random", img: "https://placehold.co/220x340/132842/57c5c1?text=HEART+SHOT+RC", url: "" },
+          { id: "fanival26-seasons-pc", title: "ELEMENTS OF SEASONS SERIES EXCLUSIVE PHOTOCARD SET", category: "PHOTOCARD", type: "secret", img: "https://placehold.co/220x340/241d26/e69d56?text=ELEMENTS+OF+SEASONS", url: "" },
+          { id: "fanival26-postcard", title: "LUCKY POSTCARD", category: "POSTCARD", type: "normal", img: "https://placehold.co/220x340/132842/73dcd3?text=LUCKY+POSTCARD", url: "" },
+          { id: "fanival26-gasha", title: "GASHA: SPARKLEFLOW ACRYLIC KEYCHAIN & POSTCARD", category: "GASHA", type: "normal", img: "https://placehold.co/300x300/162b47/f2b06d?text=SPARKLEFLOW+GASHA", url: "" }
+        ]
+      },
+      {
+        eventId: "evt-tokyo-2026",
+        subLabel: "GMMTV OFFICIAL MERCHANDISE",
+        eventTitle: "GMMTV POP UP STORE IN TOKYO 2026",
+        items: [
+          { id: "tokyo26-trans-set", title: "TRANSPARENT PHOTOSET", category: "PHOTOCARD", type: "normal", img: "https://placehold.co/220x340/162b47/f4f7fb?text=TRANSPARENT+PHOTOSET", url: "" },
+          { id: "tokyo26-rc", title: "BOYS COLLECTIBLE RANDOM CARD", category: "PHOTOCARD", type: "random", img: "https://placehold.co/220x340/132842/57c5c1?text=TOKYO+RANDOM+CARD", url: "" },
+          { id: "tokyo26-gasha", title: "GMMTV GASHA: EASTER PUFFY PHOTO CHARM", category: "GASHA", type: "normal", img: "https://placehold.co/300x300/162b47/f2b06d?text=EASTER+PUFFY+GASHA", url: "" }
+        ]
+      },
+      {
+        eventId: "evt-1st-fm-th",
+        subLabel: "SURFJAVAREXXA COLLECTION",
+        eventTitle: "SURFJAVA 1ST FAN MEETING IN THAILAND",
+        items: [
+          { id: "fm1th-doll", title: "REXXA DOLL KEYCHAIN", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=REXXA+DOLL+KEYCHAIN", url: "" },
+          { id: "fm1th-rc", title: "COLLECTIBLE RANDOM CARD", category: "PHOTOCARD", type: "random", img: "https://placehold.co/220x340/132842/57c5c1?text=FM+RANDOM+CARD", url: "" },
+          { id: "fm1th-tshirt", title: "REXXA OFFICIAL T-SHIRT", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=REXXA+T-SHIRT", url: "" },
+          { id: "fm1th-holder", title: "REXXA CHARACTER CARD HOLDER WITH PHOTOCARD", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=REXXA+CARD+HOLDER", url: "" },
+          { id: "fm1th-miniphoto", title: "MINI PHOTO SET", category: "PHOTOCARD", type: "normal", img: "https://placehold.co/220x340/162b47/f4f7fb?text=MINI+PHOTO+SET", url: "" },
+          { id: "fm1th-griptok", title: "REXXA RUBBER GRIPTOK", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=REXXA+GRIPTOK", url: "" },
+          { id: "fm1th-gasha", title: "GASHA - PHOTOCARD WITH RUBBER FRAME CARD KEYCHAIN & POSTCARD", category: "GASHA", type: "normal", img: "https://placehold.co/300x300/162b47/f2b06d?text=GASHA+RUBBER+FRAME", url: "" }
+        ]
+      },
+      {
+        eventId: "evt-taipei-2026",
+        subLabel: "GMMTV OFFICIAL MERCHANDISE",
+        eventTitle: "GMMTV POP UP STORE IN TAIPEI 2026",
+        items: [
+          { id: "tpe26-rc", title: "BOYS COLLECTIBLE RANDOM CARD", category: "PHOTOCARD", type: "random", img: "https://placehold.co/220x340/132842/57c5c1?text=TAIPEI+RANDOM+CARD", url: "" },
+          { id: "tpe26-gasha", title: "GMMTV GASHA", category: "GASHA", type: "normal", img: "https://placehold.co/300x300/162b47/f2b06d?text=GMMTV+GASHA", url: "" },
+          { id: "tpe26-griptok", title: "REXXA SPINNER MAGNETIC GRIPTOK", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=SPINNER+GRIPTOK", url: "" },
+          { id: "tpe26-trans-set", title: "TRANSPARENT PHOTOSET", category: "PHOTOCARD", type: "normal", img: "https://placehold.co/220x340/162b47/f4f7fb?text=TRANSPARENT+PHOTOSET", url: "" },
+          { id: "tpe26-passport", title: "REXXA PASSPORT COVER", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=PASSPORT+COVER", url: "" },
+          { id: "tpe26-holder", title: "ACRYLIC MAGNETIC CARD HOLDER", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=MAGNETIC+HOLDER", url: "" }
+        ]
+      },
+      {
+        eventId: "evt-tcex-2026",
+        subLabel: "SURFJAVAREXXA COLLECTION",
+        eventTitle: "TCEX 2026",
+        items: [
+          { id: "tcex26-idholder", title: "SURFJAVA ID HOLDER PIN KEYCHAIN", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=ID+HOLDER+KEYCHAIN", url: "" },
+          { id: "tcex26-sticker", title: "REXXA KEYBOARD STICKER", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=KEYBOARD+STICKER", url: "" },
+          { id: "tcex26-button", title: "REXXA BUTTON COVER SET", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=BUTTON+COVER+SET", url: "" }
+        ]
+      },
+      {
+        eventId: "evt-novel-fest-2026",
+        subLabel: "GMMTV OFFICIAL MERCHANDISE",
+        eventTitle: "INTERNATIONAL NOVEL FESTIVAL 2026",
+        items: [
+          { id: "novel26-rc", title: "BOYS ALL EYES HERE COLLECTIBLE RANDOM CARD", category: "PHOTOCARD", type: "random", img: "https://placehold.co/220x340/132842/57c5c1?text=ALL+EYES+HERE+RC", url: "" },
+          { id: "novel26-book", title: "ROOMATE NOVEL", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=ROOMATE+NOVEL", url: "" },
+          { id: "novel26-wand", title: "REXXA COMFORT WAND", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=COMFORT+WAND", url: "" },
+          { id: "novel26-mirror", title: "REXXA MIRROR KEYCHAIN", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=MIRROR+KEYCHAIN", url: "" },
+          { id: "novel26-bagtag", title: "BABY REXXA RUBBER BAG TAG", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=BABY+REXXA+BAG+TAG", url: "" },
+          { id: "novel26-pencilcase", title: "REXXA PLUSH PENCIL CASE", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=PLUSH+PENCIL+CASE", url: "" },
+          { id: "novel26-stamp", title: "REXXA SELF-INKING STAMP", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=SELF-INKING+STAMP", url: "" },
+          { id: "novel26-clip", title: "REXXA MAGNETIC UTILITY CLIP KEYCHAIN", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=UTILITY+CLIP", url: "" }
+        ]
+      },
+      {
+        eventId: "evt-char-fest-2",
+        subLabel: "GMMTV FANDOM CHARACTER",
+        eventTitle: "CHARACTER FEST THAILAND 2",
+        items: [
+          { id: "cfest2-rc", title: "GMMTV FANDOM CHARACTER RANDOM CARD", category: "PHOTOCARD", type: "random", img: "https://placehold.co/220x340/132842/57c5c1?text=FANDOM+CHAR+RC", url: "" },
+          { id: "cfest2-sleeve", title: "REXXA PHOTOCARD SLEEVE SET", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=PC+SLEEVE+SET", url: "" },
+          { id: "cfest2-comb", title: "REXXA PORTABLE COMB", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=PORTABLE+COMB", url: "" },
+          { id: "cfest2-fan", title: "REXXA LENTICULAR HAND FAN", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=LENTICULAR+FAN", url: "" },
+          { id: "cfest2-holder", title: "REXXA POP STAR CARD HOLDER", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=POP+STAR+HOLDER", url: "" }
+        ]
+      },
+      {
+        eventId: "evt-fukuoka-sep-2026",
+        subLabel: "GMMTV OFFICIAL MERCHANDISE",
+        eventTitle: "FUKUOKA POP UP STORE SEP 2026",
+        items: [
+          { id: "fuk26-gasha", title: "GMMTV GASHA ACRYLIC PHONE CHARM", category: "GASHA", type: "normal", img: "https://placehold.co/300x300/162b47/f2b06d?text=GASHA+PHONE+CHARM", url: "" },
+          { id: "fuk26-rc", title: "BOYS COLLECTIBLE RANDOM CARD", category: "PHOTOCARD", type: "random", img: "https://placehold.co/220x340/132842/57c5c1?text=FUKUOKA+RANDOM+CARD", url: "" },
+          { id: "fuk26-keycover", title: "KEY COVER KEYCHAIN", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=KEY+COVER+KEYCHAIN", url: "" },
+          { id: "fuk26-holder", title: "MINI CARD HOLDER", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=MINI+CARD+HOLDER", url: "" },
+          { id: "fuk26-eyemask", title: "SLEEPY BUDDY EYE MASK", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=SLEEPY+EYE+MASK", url: "" },
+          { id: "fuk26-charm", title: "RUBBER PHONE CHARM", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=RUBBER+PHONE+CHARM", url: "" }
+        ]
+      },
+      {
+        eventId: "evt-hongkong-2026",
+        subLabel: "GMMTV OFFICIAL MERCHANDISE",
+        eventTitle: "GMMTV POP UP STORE IN HONGKONG 2026",
+        items: [
+          { id: "hk26-rc", title: "BOYS COLLECTIBLE RANDOM CARD", category: "PHOTOCARD", type: "random", img: "https://placehold.co/220x340/132842/57c5c1?text=HK+RANDOM+CARD", url: "" },
+          { id: "hk26-bag", title: "FANDOM CHARACTER SHOPPING BAG", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=SHOPPING+BAG", url: "" },
+          { id: "hk26-griptok", title: "LENTICULAR GRIPTOK", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=LENTICULAR+GRIPTOK", url: "" },
+          { id: "hk26-clip", title: "ACRYLIC CLIP", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=ACRYLIC+CLIP", url: "" },
+          { id: "hk26-sticker", title: "STICKER SET", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=STICKER+SET", url: "" },
+          { id: "hk26-gasha", title: "GMMTV GASHA NAME TAG ACRYLIC KEYCHAIN", category: "GASHA", type: "normal", img: "https://placehold.co/300x300/162b47/f2b06d?text=NAME+TAG+GASHA", url: "" },
+          { id: "hk26-tumbler", title: "GEMM HOUSE FANDOM CHARACTER TUMBLER", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=FANDOM+TUMBLER", url: "" }
+        ]
+      },
+      {
+        eventId: "evt-malaysia-2026",
+        subLabel: "GMMTV OFFICIAL MERCHANDISE",
+        eventTitle: "GMMTV POP UP STORE IN MALAYSIA 2026",
+        items: [
+          { id: "my26-rc", title: "BOYS COLLECTIBLE RANDOM CARD", category: "PHOTOCARD", type: "random", img: "https://placehold.co/220x340/132842/57c5c1?text=MY+RANDOM+CARD", url: "" },
+          { id: "my26-grip", title: "ACRYLIC MIRROR PHONE GRIP", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=MIRROR+PHONE+GRIP", url: "" },
+          { id: "my26-bookmark", title: "GMMTV FANDOM CHARACTER STICKY BOOKMARK INDEX", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=STICKY+BOOKMARK", url: "" },
+          { id: "my26-trans-set", title: "GMMTV FANDOM CHARACTER TRANSPARENT CARD SET", category: "PHOTOCARD", type: "normal", img: "https://placehold.co/220x340/162b47/f4f7fb?text=TRANSPARENT+CARD+SET", url: "" },
+          { id: "my26-tape", title: "MASKING TAPE", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=MASKING+TAPE", url: "" },
+          { id: "my26-gasha", title: "GMMTV GASHA NAME TAG ACRYLIC KEYCHAIN", category: "GASHA", type: "normal", img: "https://placehold.co/300x300/162b47/f2b06d?text=NAME+TAG+GASHA", url: "" }
+        ]
+      },
+      {
+        eventId: "evt-singapore-2026",
+        subLabel: "GMMTV OFFICIAL MERCHANDISE",
+        eventTitle: "GMMTV POP UP STORE IN SINGAPORE 2026",
+        items: [
+          { id: "sg26-rc", title: "BOYS COLLECTIBLE RANDOM CARD", category: "PHOTOCARD", type: "random", img: "https://placehold.co/220x340/132842/57c5c1?text=SG+RANDOM+CARD", url: "" },
+          { id: "sg26-hairtie", title: "PLUSHIE HAIR TIE", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=PLUSHIE+HAIR+TIE", url: "" }
+        ]
+      },
+      {
+        eventId: "evt-osaka-2026",
+        subLabel: "GMMTV OFFICIAL MERCHANDISE",
+        eventTitle: "GMMTV POP-UP STORE IN OSAKA 2026",
+        items: [
+          { id: "osa26-rc", title: "BOYS COLLECTIBLE RANDOM CARD", category: "PHOTOCARD", type: "random", img: "https://placehold.co/220x340/132842/57c5c1?text=OSAKA+RANDOM+CARD", url: "" },
+          { id: "osa26-gasha", title: "GMMTV GASHA ACRYLIC MAGNET", category: "GASHA", type: "normal", img: "https://placehold.co/300x300/162b47/f2b06d?text=ACRYLIC+MAGNET+GASHA", url: "" },
+          { id: "osa26-cable", title: "REXXA CABLE BUDDY KEYCHAIN", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=CABLE+BUDDY", url: "" },
+          { id: "osa26-bag", title: "REXXA HUGGY BAG", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=REXXA+HUGGY+BAG", url: "" },
+          { id: "osa26-mirror", title: "REXXA MIRROR KEYCHAIN", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=MIRROR+KEYCHAIN", url: "" },
+          { id: "osa26-holder", title: "REXXA CHARMIE CARD HOLDER", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=CHARMIE+HOLDER", url: "" },
+          { id: "osa26-tag", title: "REXXA BUDDY TAG", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=REXXA+BUDDY+TAG", url: "" }
+        ]
+      },
+      {
+        eventId: "evt-starlympics-2026",
+        subLabel: "GMMTV STARLYMPICS COLLECTION",
+        eventTitle: "STARLYMPICS 2026",
+        items: [
+          { id: "star26-rc", title: "BOYS GMMTV COLLECTIBLE RANDOM CARD", category: "PHOTOCARD", type: "random", img: "https://placehold.co/220x340/132842/57c5c1?text=STARLYMPICS+RC", url: "" },
+          { id: "star26-grip", title: "SPINNER MAGNETIC GRIP", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=SPINNER+MAGNETIC+GRIP", url: "" },
+          { id: "star26-doll", title: "BUBBLE PUFF DOLL KEYCHAIN", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=BUBBLE+PUFF+DOLL", url: "" },
+          { id: "star26-totebag", title: "GMMTV DENIM TOTE BAG", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=DENIM+TOTE+BAG", url: "" }
         ]
       }
     ];
 
-    const STORAGE_KEY = "surfjava_archive_owned_v1";
+    const STORAGE_KEY = "surfjava_archive_owned_v4";
     let ownedIds = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"));
     let currentCategory = "ALL";
-    let currentMember = "ALL";
     let onlyMissing = false;
+
+    function initEventJumpSelect() {
+      const select = document.getElementById("event-jump");
+      ARCHIVE_DATA.forEach(evt => {
+        const opt = document.createElement("option");
+        opt.value = evt.eventId;
+        opt.textContent = evt.eventTitle;
+        select.appendChild(opt);
+      });
+    }
+
+    function jumpToEvent(eventId) {
+      if (!eventId) return;
+      const el = document.getElementById(eventId);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
 
     function toggleMenuDrawer() {
       document.getElementById("menu-drawer").classList.toggle("collapsed");
@@ -629,13 +839,6 @@
 
     function switchCategory(category, btnEl) {
       currentCategory = category;
-      btnEl.parentElement.querySelectorAll(".btn").forEach(btn => btn.classList.remove("active"));
-      btnEl.classList.add("active");
-      renderArchive();
-    }
-
-    function setMemberFilter(member, btnEl) {
-      currentMember = member;
       btnEl.parentElement.querySelectorAll(".btn").forEach(btn => btn.classList.remove("active"));
       btnEl.classList.add("active");
       renderArchive();
@@ -668,20 +871,19 @@
 
     function copyMissingList() {
       const missingLines = [];
-      ARCHIVE_DATA.forEach(section => {
-        if (currentCategory !== "ALL" && section.category !== currentCategory) return;
-        section.seriesList.forEach(series => {
-          if (currentMember !== "ALL" && series.member !== currentMember) return;
-          const missingInSeries = series.items.filter(item => !ownedIds.has(item.id));
-          if (missingInSeries.length > 0) {
-            const names = missingInSeries.map(i => i.title).join(", ");
-            missingLines.push(`[${series.member}] ${series.seriesName}: ${names}`);
-          }
+      ARCHIVE_DATA.forEach(evt => {
+        const filtered = evt.items.filter(item => {
+          if (currentCategory !== "ALL" && item.category !== currentCategory) return false;
+          return !ownedIds.has(item.id);
         });
+        if (filtered.length > 0) {
+          missingLines.push(`【${evt.eventTitle}】`);
+          filtered.forEach(i => missingLines.push(`- [${i.category}] ${i.title}`));
+        }
       });
 
       const text = missingLines.length > 0
-        ? "SURFJAVA 收卡/周邊缺物清單：\n" + missingLines.join("\n")
+        ? "SURFJAVAREXXA 缺物清單：\n" + missingLines.join("\n")
         : "恭喜！目前篩選條件下的項目已全部收集完成！";
 
       navigator.clipboard.writeText(text).then(() => {
@@ -700,103 +902,82 @@
       const container = document.getElementById("archive-container");
       container.innerHTML = "";
 
-      let totalVisibleItems = 0;
-      let ownedVisibleItems = 0;
+      let totalVisible = 0;
+      let ownedVisible = 0;
 
-      ARCHIVE_DATA.forEach(section => {
-        if (currentCategory !== "ALL" && section.category !== currentCategory) return;
-
-        const filteredSeries = section.seriesList.filter(series => {
-          return currentMember === "ALL" || series.member === currentMember;
+      ARCHIVE_DATA.forEach(evt => {
+        const categoryItems = evt.items.filter(item => {
+          return currentCategory === "ALL" || item.category === currentCategory;
         });
 
-        if (filteredSeries.length === 0) return;
+        if (categoryItems.length === 0) return;
 
-        const banner = document.createElement("div");
-        banner.className = `set-banner ${section.category === "MERCH" ? "merch-banner" : ""}`;
-        banner.textContent = section.bannerTitle;
-        container.appendChild(banner);
+        totalVisible += categoryItems.length;
+        ownedVisible += categoryItems.filter(i => ownedIds.has(i.id)).length;
 
-        filteredSeries.forEach(series => {
-          const seriesTotal = series.items.length;
-          const seriesOwned = series.items.filter(i => ownedIds.has(i.id)).length;
-          totalVisibleItems += seriesTotal;
-          ownedVisibleItems += seriesOwned;
+        const displayItems = onlyMissing
+          ? categoryItems.filter(item => !ownedIds.has(item.id))
+          : categoryItems;
 
-          const displayItems = onlyMissing
-            ? series.items.filter(item => !ownedIds.has(item.id))
-            : series.items;
+        if (displayItems.length === 0) return;
 
-          if (displayItems.length === 0) return;
+        const section = document.createElement("section");
+        section.className = "event-section";
+        section.id = evt.eventId;
 
-          const block = document.createElement("div");
-          block.className = "series-block";
+        section.innerHTML = `
+          <div class="catalog-header">
+            <div class="pill-sub-banner">${evt.subLabel || "GMMTV OFFICIAL MERCHANDISE"}</div>
+            <div class="main-event-bar">${evt.eventTitle}</div>
+          </div>
+        `;
 
-          // 成員與標題雙色配色 (還原截圖 SURF | SERIES NAME 底線樣式)
-          let memberColorClass = "txt-caramel";
-          let seriesColorClass = "txt-teal";
-          let headerAccentClass = "surf-accent";
-          let memberLabel = series.member;
+        const stage = document.createElement("div");
+        stage.className = "catalog-stage";
 
-          if (series.member === "SURF") {
-            memberColorClass = "txt-teal";
-            seriesColorClass = "txt-caramel";
-            headerAccentClass = "";
-          } else if (series.member === "CP") {
-            memberLabel = "SURFJAVA";
-          }
+        displayItems.forEach(item => {
+          const isOwned = ownedIds.has(item.id);
+          const isSquare = item.category === "MERCH" || item.category === "GASHA";
 
-          block.innerHTML = `
-            <div>
-              <div class="series-header ${headerAccentClass}">
-                <span class="${memberColorClass}">${memberLabel}</span>
-                <span class="series-divider">|</span>
-                <span class="${seriesColorClass}">${series.seriesName}</span>
-              </div>
-              <span class="series-count">${seriesOwned}/${seriesTotal}</span>
+          const card = document.createElement("div");
+          card.className = [
+            "showcase-item",
+            isSquare ? "is-square" : "",
+            `type-${item.type}`,
+            isOwned ? "owned" : ""
+          ].filter(Boolean).join(" ");
+
+          const secretTagHtml = item.type === "secret"
+            ? `<span class="secret-badge">SECRET</span>`
+            : "";
+
+          // 有填寫 url 時，文字變成點擊可開新分頁前往官網購買頁的超連結
+          const titleHtml = item.url && item.url.trim() !== ""
+            ? `<a class="showcase-link" href="${item.url}" target="_blank" rel="noopener noreferrer" title="前往官方購買頁面">${item.title}</a>`
+            : item.title;
+
+          const catClass = `cat-${item.category.toLowerCase()}`;
+
+          card.innerHTML = `
+            <div class="img-wrapper" onclick="toggleOwned('${item.id}')" title="點擊圖片標記已擁有">
+              ${secretTagHtml}
+              <img src="${item.img}" alt="${item.title}" loading="lazy">
             </div>
+            <div class="showcase-title">${titleHtml}</div>
+            <div class="showcase-type ${catClass}">${item.category}</div>
           `;
-
-          const isMerch = section.category === "MERCH";
-          const grid = document.createElement("div");
-          grid.className = isMerch ? "merch-grid" : "card-grid";
-
-          displayItems.forEach(item => {
-            const isOwned = ownedIds.has(item.id);
-            const card = document.createElement("div");
-            card.className = [
-              "item-card",
-              isMerch ? "is-merch" : `type-${item.type}`,
-              isOwned ? "owned" : ""
-            ].join(" ");
-            card.title = item.title;
-            card.onclick = () => toggleOwned(item.id);
-
-            const captionHtml = isMerch
-              ? `<div class="merch-caption">
-                   <div class="merch-title">${item.title}</div>
-                   ${item.sub ? `<div class="merch-sub">${item.sub}</div>` : ""}
-                 </div>`
-              : "";
-
-            card.innerHTML = `
-              <div class="img-wrapper">
-                <img src="${item.img}" alt="${item.title}" loading="lazy">
-              </div>
-              ${captionHtml}
-            `;
-            grid.appendChild(card);
-          });
-
-          block.appendChild(grid);
-          container.appendChild(block);
+          stage.appendChild(card);
         });
+
+        section.appendChild(stage);
+        container.appendChild(section);
       });
 
-      const percent = totalVisibleItems > 0 ? Math.round((ownedVisibleItems / totalVisibleItems) * 100) : 0;
-      document.getElementById("stats-badge").textContent = `OWNED: ${ownedVisibleItems} / ${totalVisibleItems} (${percent}%)`;
+      const percent = totalVisible > 0 ? Math.round((ownedVisible / totalVisible) * 100) : 0;
+      document.getElementById("stats-badge").textContent = `OWNED: ${ownedVisible} / ${totalVisible} (${percent}%)`;
     }
 
+    initEventJumpSelect();
     renderArchive();
   </script>
 </body>
