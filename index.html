@@ -257,7 +257,7 @@
       cursor: pointer;
     }
 
-    /* 4. 內容容器與圖例說明 (已移除尺寸文字) */
+    /* 4. 內容容器與圖例說明 */
     .container {
       max-width: 1120px;
       margin: 0 auto;
@@ -384,7 +384,6 @@
       transform: translateY(-4px);
     }
 
-    /* 圖片區：點擊切換「已擁有」 */
     .img-wrapper {
       position: relative;
       width: 100%;
@@ -398,9 +397,8 @@
       transition: box-shadow 0.2s ease, border-color 0.2s ease;
     }
 
-    /* 周邊與扭蛋使用 1:1 正方形比例 */
     .showcase-item.is-square .img-wrapper {
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 1 / 1; /* 周邊與扭蛋 1:1 比例 */
     }
 
     .showcase-item.type-random .img-wrapper {
@@ -449,7 +447,6 @@
       z-index: 1;
     }
 
-    /* 文字區：支援官方購買連結 */
     .showcase-title {
       margin-top: 10px;
       font-size: 0.74rem;
@@ -481,7 +478,6 @@
       color: var(--surf-teal);
     }
 
-    /* 分類標籤配色 */
     .showcase-type {
       margin-top: 4px;
       font-size: 0.62rem;
@@ -620,15 +616,6 @@
   <div class="toast" id="toast">已複製缺物清單！</div>
 
   <script>
-    /**
-     * =================================================================
-     * SURFJAVAREXXA 完整 15 大系列資料庫
-     * category: 'PHOTOCARD' | 'POSTCARD' | 'GASHA' | 'MERCH'
-     * type:     'random' (薄荷藍綠框) | 'secret' (雙邊亮框特效) | 'normal' (一般展示)
-     * img:      圖片路徑 (例如 "./images/26-h2h-card-01.jpg")
-     * url:      官網購買頁面連結 (留空 "" 則顯示純文字，填入網址則變成可點擊連結)
-     * =================================================================
-     */
     const ARCHIVE_DATA = [
       {
         eventId: "evt-head-2-head",
@@ -677,12 +664,12 @@
         subLabel: "SURFJAVAREXXA COLLECTION",
         eventTitle: "SURFJAVA 1ST FAN MEETING IN THAILAND",
         items: [
-          { id: "img: "./images/26-fm1-merch-doll.webp", title: "REXXA DOLL KEYCHAIN", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=REXXA+DOLL+KEYCHAIN", url: "" },
+          { id: "fm1th-doll", title: "REXXA DOLL KEYCHAIN", category: "MERCH", type: "normal", img: "./images/26-fm1-merch-doll.webp", url: "" },
           { id: "fm1th-rc", title: "COLLECTIBLE RANDOM CARD", category: "PHOTOCARD", type: "random", img: "https://placehold.co/220x340/132842/57c5c1?text=FM+RANDOM+CARD", url: "" },
-          { id: img: "./images/26-fm1-merch-tshirt.webp", title: "REXXA OFFICIAL T-SHIRT", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=REXXA+T-SHIRT", url: "" },
-          { id: img: "./images/26-fm1-merch-cardholder.webp", title: "REXXA CHARACTER CARD HOLDER WITH PHOTOCARD", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=REXXA+CARD+HOLDER", url: "" },
+          { id: "fm1th-tshirt", title: "REXXA OFFICIAL T-SHIRT", category: "MERCH", type: "normal", img: "./images/26-fm1-merch-tshirt.webp", url: "" },
+          { id: "fm1th-holder", title: "REXXA CHARACTER CARD HOLDER WITH PHOTOCARD", category: "MERCH", type: "normal", img: "./images/26-fm1-merch-cardholder.webp", url: "" },
           { id: "fm1th-miniphoto", title: "MINI PHOTO SET", category: "PHOTOCARD", type: "normal", img: "https://placehold.co/220x340/162b47/f4f7fb?text=MINI+PHOTO+SET", url: "" },
-          { id: img: "./images/26-fm1-merch-rubbergriptok.webp", title: "REXXA RUBBER GRIPTOK", category: "MERCH", type: "normal", img: "https://placehold.co/300x300/162b47/f4f7fb?text=REXXA+GRIPTOK", url: "" },
+          { id: "fm1th-griptok", title: "REXXA RUBBER GRIPTOK", category: "MERCH", type: "normal", img: "./images/26-fm1-merch-rubbergriptok.webp", url: "" },
           { id: "fm1th-gasha", title: "GASHA - PHOTOCARD WITH RUBBER FRAME CARD KEYCHAIN & POSTCARD", category: "GASHA", type: "normal", img: "https://placehold.co/300x300/162b47/f2b06d?text=GASHA+RUBBER+FRAME", url: "" }
         ]
       },
@@ -951,7 +938,6 @@
             ? `<span class="secret-badge">SECRET</span>`
             : "";
 
-          // 有填寫 url 時，文字變成點擊可開新分頁前往官網購買頁的超連結
           const titleHtml = item.url && item.url.trim() !== ""
             ? `<a class="showcase-link" href="${item.url}" target="_blank" rel="noopener noreferrer" title="前往官方購買頁面">${item.title}</a>`
             : item.title;
